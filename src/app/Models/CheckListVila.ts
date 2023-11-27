@@ -1,0 +1,32 @@
+export class checkListVila{
+    vilaId!:number;
+    hairDryer!:boolean;
+    cleaningProducts!:boolean;
+    shampoo!:boolean;
+    conditioner!:boolean;
+    bodySoap!:boolean;
+    showerGel!:boolean;
+    washingMachine!:boolean;
+    clothesDdryer!:boolean;
+    towels!:boolean;
+    clothingStorage!:boolean;
+    bedLinen!:boolean;
+    soap!:boolean;
+    toiletPaper!:boolean;
+    hangers!:boolean;
+    iron!:boolean;
+    crib!:boolean;
+    childrensBooks!:boolean;
+    wifi!:boolean;
+    terrace!:boolean;
+    pool!:boolean;
+    heatedPool!:boolean;
+    poolTable!:boolean;
+    barbecue!:boolean;
+    refrigerator!:boolean;
+    microwave!:boolean;
+    cookingBasics!:boolean;
+    freezer!:boolean;
+    wineGlasses!:boolean;
+    coffeeMachine!:boolean;
+}

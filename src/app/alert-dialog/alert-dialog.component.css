@@ -1,0 +1,21 @@
+.alert-dialog {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 300px;
+  position: fixed;
+  top: 19%;
+  left: 78%;
+  transform: translate(-50%, -50%); 
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+}
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  

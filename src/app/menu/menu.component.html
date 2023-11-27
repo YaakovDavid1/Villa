@@ -1,0 +1,60 @@
+
+ <body class="site-background"> 
+
+    <button class="open-alert-button" routerLink="/login" > <- לאיזור האישי  </button>
+  
+    <!--כרגע לא בשימוש-->
+    <app-alert-dialog *ngIf="showAlertDialog"></app-alert-dialog>
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="title-container text-center">
+      <h1 class="text-white">אתר החופשות של ישראל</h1>
+      <p  class="text-white">מבחר ענק של וילות וצימרים לנופש</p>
+    </div>
+    
+  
+  <div class="menu-container d-flex justify-content-center align-items-center" style="height: calc(100vh - 40em);">
+     <nav class="navbar navbar-expand-lg navbar-light bg-white rounded">
+       <div class="container">
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNav">
+           <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <button class="btn btn-danger rounded-circle">
+                <i class="fas fa-search, fa fa-search fa-2x text-white"></i>
+              </button>
+            </li>
+            <li class="nav-item" [matMenuTriggerFor]="roomCountMenu">
+              <input class="form-control rounded-pill" type="text" placeholder="כמות חדרים בוילה">
+            </li>
+            
+            <mat-menu #roomCountMenu="matMenu">
+              <button mat-menu-item (click)="selectRoomCount('1+')">1+</button>
+              <button mat-menu-item (click)="selectRoomCount('2+')">2+</button>
+              <button mat-menu-item (click)="selectRoomCount('3+')">3+</button>
+              <button mat-menu-item (click)="selectRoomCount('4+')">4+</button>
+            </mat-menu>
+             <li class="nav-item">         
+               <input class="form-control rounded-pill" type="text" placeholder="בחר איבזור">                       
+             </li>
+             <li class="nav-item">
+               <input class="form-control rounded-pill" type="text" placeholder="בחר קטגוריה">
+             </li>
+             <li class="nav-item">
+               <input class="form-control rounded-pill" type="text" placeholder="הזן אזור">
+             </li>           
+           </ul>
+         </div>
+       </div>
+     </nav>
+   </div>
+  </body>

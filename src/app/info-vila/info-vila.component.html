@@ -1,0 +1,85 @@
+
+<div class="container text-center mt-4">
+  <button class="btn btn-light  position-absolute" style="top: 75%;  " (click)="previousImage()"><</button>
+  <div *ngIf="imageUrls && imageUrls.length > 0">
+    <div class="d-flex justify-content-center align-items-center">
+      <img [src]="currentImageUrl" alt="Villa Image" style="margin: 10px; width: 660px; height: auto;">
+    </div>
+  </div>
+  <button class="btn btn-light position-absolute" style="top: 65%;  " (click)="nextImage()">></button>
+</div>
+
+<!-- New container for the description on the left -->
+<div class="container mt-4 text" style="max-width: 600px; margin-left: auto; margin-right: auto;">
+  <h2>Villa {{detailOneVila?.villaDetails?.nameVila ?? 'Default Villa Name'}}</h2>
+  <h4>About the complex:</h4>
+  <p>{{detailOneVila?.villaDetails?.description ?? 'Default Villa description'}}</p>
+
+  <h4>more details  </h4>
+  <p>In the {{detailOneVila?.villaDetails?.nameVila ?? 'Default Villa Name'}} Villa we have
+            {{detailOneVila?.villaDetails?.numBedroom ?? 'Default Villa Bedroom'}} Bedroom,
+            {{detailOneVila?.villaDetails?.numBathroom ?? 'Default Villa Bedroom'}} Bathroom, and
+            {{detailOneVila?.villaDetails?.numShower ?? 'Default Villa Shower'}}  Shower
+  </p>
+
+  <h4>External description of the complex:</h4>
+  <p>{{detailOneVila?.villaDescription?.outDescription ?? 'Default Villa outDescription'}}</p>
+
+  <h4>Internal description of the complex:</h4>
+  <p>{{detailOneVila?.villaDescription?.inDescription ?? 'Default Villa inDescription'}}</p>
+
+  <h4>Audience</h4>
+  <p>{{detailOneVila?.villaDescription?.audience ?? 'Default Villa audience'}}</p>
+
+  <h4>Important Information:</h4>
+  <p>{{detailOneVila?.villaDescription?.importantInfo ?? 'Default Villa importantInfo'}}</p>
+
+  <h4>Services we have in the complex:</h4>
+  <ul>
+    <li *ngFor="let amenity of getAmenities()">
+      {{ amenity }}
+    </li>
+    
+  </ul>
+</div>
+
+
+  
+
+
+
+<!--
+
+<div class="container mt-4 text-left" style="max-width: 600px; margin-left: auto; margin-right: auto;">
+  <h2>About {{ villa?.nameVila }} Villa</h2>
+  <h4>About the complex:</h4>
+  <p>{{ description?.aboutComplex }}</p>
+
+  <h4>more details  </h4>
+  <p>In the {{ villa?.nameVila }} Villa we have {{ villa?.numBedroom }} Bedroom, {{ villa?.numBathroom }} Bathroom,
+    {{ villa?.numShower }} Shower
+  </p>
+  
+
+  <h4>External description of the complex:</h4>
+  <p>{{ description?.outDescription }}</p>
+
+  <h4>Internal description of the complex:</h4>
+  <p>{{ description?.inDescription }}</p>
+
+  <h4>Audience</h4>
+  <p>{{ description?.audience }}</p>
+
+  <h4>Important Information:</h4>
+  <p>{{ description?.importantInfo }}</p>
+
+  <h4>Services we have in the complex:</h4>
+  <ul>
+    <li>{{ checkList?.hairDryer ? 'Hair Dryer Available' : 'No Hair Dryer' }}</li>
+    <li>{{ checkList?.cleaningProducts ? 'Cleaning Products Available' : 'No Cleaning Products' }}</li>
+    <li>{{ checkList?.shampoo ? 'Shampoo Available' : 'No Shampoo' }}</li>
+    <li>{{ checkList?.conditioner ? 'Conditioner Available' : 'No Conditioner' }}</li>
+    <li>{{ checkList?.bodySoap ? 'Body Soap Available' : 'No Body Soap' }}</li>
+  </ul>
+</div>
+-->

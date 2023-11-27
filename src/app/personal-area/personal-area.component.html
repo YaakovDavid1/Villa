@@ -1,0 +1,329 @@
+<nav class="navbar bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand">איזור אישי</a>
+   <!--     <div>
+            <h4>Hello, {{userData.firstName}} {{userData.lastName}} </h4>
+        </div>-->
+    </div>
+</nav><br>
+
+<button class="btn btn-danger" (click)="toggleVillaForm()">הוסף וילה</button>
+
+<ng-container *ngIf="showVillaForm">
+<div class="text-center">
+    <h2>מילוי פרטים על הוילה</h2>
+</div><br><br><br>
+
+
+<!-- villa-registration.component.html -->
+<div class="container">
+    <div class="row">
+      <!-- Step 1: User Information -->
+      <div class="col-3 text-center">
+        <div class="step-circle" (click)="changeStep(1)"><h5>Step 1</h5></div>
+      </div>
+      <!-- Step 2: Villa Information -->
+      <div class="col-3 text-center">
+        <div class="step-circle" (click)="changeStep(2)"><h5>Step 2</h5></div>
+      </div>
+      <!-- Step 3: Photo Upload -->
+      <div class="col-3 text-center">
+        <div class="step-circle" (click)="changeStep(3)"><h5>Step 3</h5></div>
+      </div>
+      <!-- Step 3: Photo Upload 
+      <div class="col-3 text-center">
+        <div class="step-circle" (click)="changeStep(4)"><h5>Step 3</h5></div>
+      </div>-->
+ </div><br><br>
+
+
+   <!-- Display the selected step's form -->
+   <div class="row">
+    <div class="col">
+      <form *ngIf="currentStep === 1">
+        <!-- Step 1 form fields -->
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 offset-md-4">
+              <h2 class="mb-4">פרטים על מקום האירוח  </h2>
+              <form [formGroup]="vilaDetails">
+                <div class="form-group">
+                  <label for="nameVila">שם הוילה </label>
+                  <input type="text" class="form-control" formControlName="nameVila"  required>
+                </div>
+                <div class="form-group">
+                  <label for="location">מיקום  </label>
+                  <input type="text" class="form-control" formControlName="location" required>
+                </div>
+                <div class="form-group">
+                  <label for="numBedroom">מספר חדרים  </label>
+                  <input type="number" class="form-control" formControlName="numBedroom" required>
+                </div>
+                <div class="form-group">
+                  <label for="numBathroom">מספר שרותים </label>
+                  <input type="number" class="form-control" formControlName="numBathroom" required>
+                </div>
+                <div class="form-group">
+                  <label for="numShower">מספר מקלחות</label>
+                  <input type="number" class="form-control" formControlName="numShower" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">תיאור הוילה בכללי  </label>
+                    <input type="text" class="form-control" formControlName="description" >
+                </div>              
+                <button class="btn btn-primary" (click)="nextStep(2)">הבא</button>
+              </form>
+            </div>
+          </div>
+        </div>   
+      </form>
+
+   <form *ngIf="currentStep === 2">
+        <!-- Step 2 form fields -->
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 offset-md-4">
+              <h2 class="mb-4">תיאור מקום האירוח  </h2>
+              <form [formGroup]="vilaDescription">               
+                <div class="form-group">
+                    <label for="outDescription">תיאור חיצוני של המתחם </label>
+                    <input type="text" class="form-control" formControlName="outDescription" required>
+                </div>
+                <div class="form-group">
+                    <label for="inDescription">תיאור פנימי של המתחם  </label>
+                    <input type="text" class="form-control" formControlName="inDescription" required>
+                </div>
+                <div class="form-group">
+                    <label for="audience">מי הקהל יעד     </label>
+                    <input type="text" class="form-control" formControlName="audience" required>
+                </div>
+                <div class="form-group">
+                    <label for="importantInfo">  מידע שחשוב לדעת  </label>
+                    <input type="text" class="form-control" formControlName="importantInfo" required>
+                </div>                
+                <button class="btn btn-primary" (click)="nextStep(3)">הבא</button>
+                <button class="btn btn-secondary" (click)="previousStep(1)"> הקודם</button>
+              </form>
+            </div>
+          </div>
+        </div>   
+      </form>
+    
+      <form *ngIf="currentStep === 3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 offset-md-4">
+              <h2 class="mb-4">    איבזור מקום האירוח - נא לסמן מה יש בוילה </h2>
+              <form [formGroup]="checkListVila">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" formControlName="hairDryer">
+                  <label class="form-check-label" for="hairDryer"> מייבש שיער</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" formControlName="cleaningProducts">
+                  <label class="form-check-label" for="cleaningProducts">מוצרי ניקוי    </label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" formControlName="shampoo">
+                  <label class="form-check-label" for="shampoo">שמפו </label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" formControlName="conditioner">
+                  <label class="form-check-label" for="conditioner">מרכך לשיער </label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" formControlName="bodySoap">
+                  <label class="form-check-label" for="bodySoap">סבון גוף </label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" formControlName="showerGel">
+                  <label class="form-check-label" for="showerGel">ג'ל רחצה </label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" formControlName="washingMachine">
+                  <label class="form-check-label" for="washingMachine">מכונת כביסה </label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" formControlName="clothesDdryer">
+                  <label class="form-check-label" for="clothesDdryer">מייבש כביסה </label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" formControlName="towels">
+                  <label class="form-check-label" for="towels">מגבות </label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="clothingStorage">
+                    <label class="form-check-label" for="clothingStorage">ארון לאיחסון בגדים </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="bedLinen">
+                    <label class="form-check-label" for="bedLinen">מצעים למיטה </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="soap">
+                    <label class="form-check-label" for="soap">סַבּוֹן </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="toiletPaper">
+                    <label class="form-check-label" for="toiletPaper">נייר טואלט </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="hangers">
+                    <label class="form-check-label" for="hangers">קולבים </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="iron">
+                    <label class="form-check-label" for="iron">מגהץ </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="crib">
+                    <label class="form-check-label" for="crib">לול </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="childrensBooks">
+                    <label class="form-check-label" for="childrensBooks">ספרי ילדים </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="wifi">
+                    <label class="form-check-label" for="wifi">אינטרנט אלחוטי </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="terrace">
+                    <label class="form-check-label" for="terrace">מרפסת </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="pool">
+                    <label class="form-check-label" for="pool">בריכה </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="heatedPool">
+                    <label class="form-check-label" for="heatedPool">בריכה מחוממת </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="poolTable">
+                    <label class="form-check-label" for="poolTable">שולחן ביליארד </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="barbecue">
+                    <label class="form-check-label" for="barbecue">מנגל </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="refrigerator">
+                    <label class="form-check-label" for="refrigerator">מְקָרֵר </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="microwave">
+                    <label class="form-check-label" for="microwave">מיקרוגל </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="cookingBasics">
+                    <label class="form-check-label" for="cookingBasics">כלי בישול </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="freezer">
+                    <label class="form-check-label" for="freezer">מקרר </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="wineGlasses">
+                    <label class="form-check-label" for="wineGlasses">כוסות יין  </label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="coffeeMachine">
+                    <label class="form-check-label" for="coffeeMachine">מכונת קפה </label>
+                  </div>
+                <!-- Add more amenity options as needed -->
+                
+                <button class="btn btn-primary" (click)="nextStep(4)">הבא</button>
+                <button class="btn btn-secondary" (click)="previousStep(2)"> הקודם</button>
+              </form>
+          </div>
+         </div>
+        </div>
+      </form>
+
+      <form *ngIf="currentStep === 4"  >
+        <div class="container-image">
+          <h2 class="mb-4">   העלאת תמונות </h2>
+          <div class="row">
+                <form>
+                  <div *ngFor="let fileInput of fileInputs; let i = index" class="image-upload">
+                    <label for="fileInput{{ i }}" class="upload-label">לחץ להעלאת תמונה מספר {{ i + 1 }}</label>
+                    <input
+                      type="file"
+                      id="fileInput{{ i }}"
+                      (change)="onFileSelected1($event, i)"
+                      accept="image/*"
+                    />
+                    <img [src]="images1[i]?.url" alt="Uploaded Image" *ngIf="images1[i]?.url" style="width: 100px; height: 100px; margin: 5px;"/>
+                  </div>
+                
+                    <button class="btn btn-danger" (click)="addFileInput()">הוסף תמונה</button>
+                   <!-- <button type="button" (click)="onUpload()">Upload Images</button>-->
+
+                    <button class="btn btn-primary" (click)="submitForm()">שליחה</button>
+                    <button class="btn btn-secondary" (click)="previousStep(3)"> הקודם</button>
+                </form>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--גלוי רק למנהלים-->
+
+<ng-container *ngIf = "role === 'Admin'">
+<h1>personal-area works!</h1>
+</ng-container>
+
+
+<button (click)="logout()" class="btn btn-danger">Log out</button>
+
+<ul *ngFor="let user of users">
+    <li>{{user.username}}</li>
+</ul>
+
+
+
+<div *ngIf="userData">
+    <li>ownerUserID: {{ userData.userID }} </li>
+    <li>firstName: {{ userData.firstName }}</li>
+    <li>lastName: {{ userData.lastName }}</li>
+    <li>userName: {{ userData.username }}</li>
+    
+</div>
+
+
+<!-- בדיקות: לקבל מהסרבר פרטים על המשתמש
+
+<form (ngSubmit)="getDetailUser()">
+    <div>
+      <input [(ngModel)]="email" name="email" type="text" placeholder="Email" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Enter Email</button>
+  </form>
+
+  <ul *ngFor="let d of villaDetails">
+    <li>{{ d.nameVila }}</li>
+  </ul>-->
+  <!-- <button type="submit" class="btn btn-primary">Enter Email</button>-->
+
+
+
+
+
+

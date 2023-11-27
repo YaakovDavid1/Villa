@@ -1,0 +1,62 @@
+<!-- comment 
+<app-info-vila></app-info-vila>-->
+<router-outlet></router-outlet>
+
+<div class="container">
+   <div class="row">
+     <div class="col-3" *ngFor="let index of getArray(villaDetails.length)">
+       <app-card-villa [villa]="getDummyVillaData(index)" [image]="villaImages[index]" (viewDetailsClicked)="onViewDetailsClicked($event)"></app-card-villa>
+     </div>
+   </div>
+ </div>
+ 
+
+
+
+<!--
+<app-list-villa [villas]="villas"></app-list-villa>
+-->
+
+<!-- toast no working, check why
+<lib-ng-toast></lib-ng-toast>
+-->
+
+<!--
+ <form [formGroup]="testForm">
+   <div>
+      <input formControlName="name" type="text" placeholder="Name" required>
+      <input formControlName="city" type="text" placeholder="City" required>
+   </div>
+</form>
+<button  type="button" class="btn btn-primary" (click)="Addtest()">Add Test</button>
+ -->
+ 
+
+
+
+
+<!--
+   
+<h1>Hello Vila</h1>
+<button (click)="getUsers()">Get Users</button>
+<ul *ngFor="let u of user">
+   <li>{{ u.username }}</li>
+   <li>{{ u.passwordHash }}</li>
+   <li>{{ u.email }}</li>
+   <li>{{ u.firstName }}</li>
+   <li>{{ u.lastName }}</li>
+   <li>{{ u.role }}</li>
+   <hr>
+</ul>
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+<button type="button" class="btn btn-link">Link</button>
+
+-->
+
